@@ -2,5 +2,7 @@
   "name": "benchmarking",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

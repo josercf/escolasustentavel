@@ -1,0 +1,56 @@
+<ion-content class="login-content" padding>
+    <ion-row class="top-row">
+      <ion-col>
+        <h1 class="label-logo">Logo AQUI</h1>
+          <p class="label-description">Escola Sustentável</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="bottom-row">
+      <ion-col class="login-button">
+        <button ion-button block color="danger" (click)="signInWithGoogle()">Google Login</button>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+
+  
+
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="jumbotron bg-transparent text-center">
+        <div *ngIf="!user" class="card text-center">
+          <h6 class="card-header">
+            Entrar
+          </h6>
+          <div class="card-block">
+            <h4 class="card-title">Não logado</h4>
+            <p class="card-text">Entrar com:</p>
+          </div>
+          <div class="card-block">
+            <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">Google<span class="fa fa-google"></span></button>
+            <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()">Facebook<span class="fa fa-facebook"></span></button>
+            <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()">LinkedIn<span class="fa fa-linkedin"></span></button>
+          </div>
+        </div>
+        <div *ngIf="user" class="card text-center">
+          <h6 class="card-header">
+            Escola Sustentável
+          </h6>
+          <div class="card-block"></div>
+          <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+          <div class="card-block">
+            <h4 class="card-title">{{ user.name }}</h4>
+            <p class="card-text">{{ user.email }}</p>
+          </div>
+          <div class="card-block">
+            <button class="btn btn-danger" (click)="signOut()">Sair</button>
+          </div>
+        </div>
+      </div>
+</ion-content> -->

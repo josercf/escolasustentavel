@@ -1,14 +1,23 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar color="danger">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="toggleMenu();">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <!-- <ion-avatar item-start>
+          <img [src]="user.photoUrl">
+        </ion-avatar> -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openMenu('user')">
+
+        <!-- <ion-img [src]="user.photoUrl"></ion-img> -->
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div #map id="map"></div>
 </ion-content>
