@@ -14,7 +14,6 @@ import { HomePageModule } from '../pages/home/home.module';
 import { HomePage } from '../pages/home/home';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
-import { SocialAuthProvider } from '../providers/social-auth/social-auth';
 import { MyActionsPage } from '../pages/my-actions/my-actions';
 import { MyActionsPageModule } from '../pages/my-actions/my-actions.module';
 
@@ -78,8 +77,7 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    },
-    SocialAuthProvider
+    }
   ]
 })
 export class AppModule { }
