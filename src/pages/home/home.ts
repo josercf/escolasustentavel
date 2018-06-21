@@ -43,11 +43,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public events: Events,
-    // public http: Http,
     private geolocation: Geolocation) {
     this.user = navParams.get('user');
-    this.events.publish('user:login', this.user);
   }
 
   ionViewDidLoad() {

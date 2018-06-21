@@ -5,28 +5,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
-import { SocialUser } from 'angularx-social-login';
+import { SocialUser, AuthService } from 'angularx-social-login';
+import { ProfilePage } from '../pages/profile/profile';
+import { MyActionsPage } from '../pages/my-actions/my-actions';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = LoginPage;
-  pages: Array<{ title: string, component: any }>;
-
-
-  public user: SocialUser;
-  public userName: string = "";
+  pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(platform: Platform, statusBar: StatusBar,
-    splashScreen: SplashScreen, public events: Events) {
-
-    events.subscribe('user:login', (_user) => {
-      this.user = _user;
-      this.userName = this.user.name;
-      console.log("logged in");
-    });
-
+    splashScreen: SplashScreen,
+    private authService: AuthService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,8 +27,10 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Sair', component: LoginPage }
+      { title: 'Home', icon: 'home', component: HomePage },
+      { title: 'Meu Perfil', icon: 'contact', component: ProfilePage },
+      { title: 'Minhas ações', icon: 'book', component: MyActionsPage },
+      // { title: 'Configurações', icon: 'settings', component: LoginPage }
     ];
   }
 
@@ -44,6 +38,14 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  sair() {
+    console.log("signOut");
+    this.authService.signOut()
+      .then(result => {
+        this.nav.push(LoginPage);
+      });
   }
 }
 

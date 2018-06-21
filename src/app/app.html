@@ -6,53 +6,18 @@
     </ion-header>
 
     <ion-content>
-      
         <ion-list>
-            <ion-item menuClose>
+            <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
                 <ion-icon name=""></ion-icon>
-                Meu Perfil
-                <ion-icon name="contact" item-right></ion-icon>
+                {{p.title}}
+                <ion-icon [name]="p.icon" item-right></ion-icon>
             </ion-item>
-            <ion-item menuClose>
+            <ion-item menuClose (click)="sair()">
                 <ion-icon name=""></ion-icon>
-                Minhas ações
-                <ion-icon name="book" item-right></ion-icon>
+                Sair
+                <ion-icon name="lock" item-right></ion-icon>
             </ion-item>
-            <ion-item menuClose>
-                <ion-icon name=""></ion-icon>
-                Configurações
-                <ion-icon name="settings" item-right></ion-icon>
-            </ion-item>
-            <ion-item menuClose>
-                    <ion-icon name=""></ion-icon>
-                    Sair
-                    <ion-icon name="lock" item-right></ion-icon>
-                </ion-item>
         </ion-list>
     </ion-content>
 </ion-menu>
-
-<!-- <ion-menu [content]="content" side="right" id="menu2">
-        <ion-header>
-            <ion-toolbar color="danger">
-                <ion-title>USER PROFILE</ion-title>
-            </ion-toolbar>
-        </ion-header>
-        <ion-content>
-            <ion-list>
-                <ion-item menuClose>
-                    <ion-icon name=""></ion-icon>
-                    Forget Password
-                    <ion-icon name="key" item-right></ion-icon>
-                </ion-item>
-                <ion-item menuClose>
-                    <ion-icon name=""></ion-icon>
-                    Logout
-                    <ion-icon name="lock" item-right></ion-icon>
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-menu> -->
-
-
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
