@@ -16,6 +16,8 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
 import { MyActionsPage } from '../pages/my-actions/my-actions';
 import { MyActionsPageModule } from '../pages/my-actions/my-actions.module';
+import { UserService } from '../pages/services/user-service';
+import { Http, HttpModule } from '../../node_modules/@angular/http';
 
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -51,10 +53,11 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     SocialLoginModule,
@@ -77,7 +80,8 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    }
+    },
+    UserService
   ]
 })
 export class AppModule { }

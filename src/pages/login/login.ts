@@ -3,6 +3,8 @@ import { NavController, Events } from 'ionic-angular';
 import { AuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider } from "angularx-social-login";
 import { HomePage } from '../home/home';
+import { UserService } from '../services/user-service';
+import { User } from '../../models/user';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class LoginPage {
   private loggedIn: boolean;
 
   constructor(public navCtrl: NavController,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private userService: UserService) {
   }
 
   ionViewDidLoad() {
@@ -29,10 +32,22 @@ export class LoginPage {
         return;
       }
 
-      console.log(`user: ${this.user.firstName} is logged`);
-      this.navCtrl.push(HomePage, {
-        user: this.user
-      });
+      let appUser = new User();
+      appUser.Provider = this.user.provider;
+      appUser.Email = this.user.email;
+      appUser.Name = this.user.name;
+      appUser.PhotoUrl = this.user.photoUrl;
+      appUser.FirstName = this.user.firstName;
+      appUser.LastName = this.user.lastName;
+      appUser.Address = null;
+
+      this.userService.insert(appUser)
+        .subscribe((response) => {
+          console.log(`user: ${this.user.firstName} is logged`);
+          this.navCtrl.push(HomePage, {
+            user: this.user
+          });
+        });
     });
   }
 
