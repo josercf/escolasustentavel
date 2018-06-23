@@ -86,16 +86,19 @@ export class HomePage {
 
       var contentString =
         '<div class = "card">' +
-        '   <div class = "item item-avatar">' +
-        //'      <img src = "my-image.png">'+
-        `      <h2>${element.Name}</h2>` +
+        '   <div class = "container-img-location">' +       
+        '      <img class="location" src="../../assets/imgs/96PX.png" alt="">'+ 
+        '      <img class="texto-complementar" src="../../assets/imgs/Texto_complementar.png" alt="">'+   
+            
         '   </div>' +
+        `      <h5>${element.Name}</h5>` +
         '         ' +
         '   <div class = "item item-body">' +
         `     ${element.Description}` +
         '   </div>' +
+        //`   <button class="button icon-left ion-star button-positive">Favorites</button>`+
         '   <div class = "item item-divider">' +
-        `     <a href="/details/${element.Id}">Clique e colabore<a/>` +
+        `     <a href="/details/${element.Id}">Ver ação<a/>` +
         '     <i class="icon ion-heart"></i>' +
         '   </div>' +
         '</div>';
@@ -104,13 +107,22 @@ export class HomePage {
         content: contentString
       });
 
+      var pinColor = "2CAF18";
+      var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34));
+
       var marker = new google.maps.Marker({
         position: element.Position,
         map: map,
         title: element.Name,
-        icon: ''
+        icon: pinImage,
       });
+
+     
       marker.addListener('click', function () {
+        
         infowindow.open(map, marker);
       });
 

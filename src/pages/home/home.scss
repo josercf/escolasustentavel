@@ -2,4 +2,33 @@ page-home {
     #map {
         height: 100%;
       }
+
+      .container-img-location {
+          position: relative;
+          width: 100%;
+          height: auto;
+          display: inline-block;
+          margin: 0 auto;
+      }
+
+      .texto-complementar {
+        margin-left: 5px;
+        height: 36px;
+      }
+
+      img.location{
+        height: 36px;
+        width: 36px;
+        float: left;
+      }
+
+      .item.item-body{
+        margin-bottom: 15px;
+      }
+
+      .item a {
+        font-weight: bold;
+        text-decoration: inherit; /* no underline */
+        font-size: 1.3em
+      }
 }

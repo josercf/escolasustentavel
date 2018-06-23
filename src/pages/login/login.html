@@ -1,56 +1,89 @@
-<ion-content class="login-content" padding>
-    <ion-row class="top-row">
-      <ion-col>
-        <h1 class="label-logo">Logo AQUI</h1>
-          <p class="label-description">Escola Sustentável</p>
-      </ion-col>
-    </ion-row>
-    <ion-row class="bottom-row">
-      <ion-col class="login-button">
-        <button ion-button block color="danger" (click)="signInWithGoogle()">Google Login</button>
-      </ion-col>
-    </ion-row>
-  </ion-content>
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
 
-  
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Sustentabilidade Escolar</strong>
+      </h2>
+    </div>
 
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email"  ></ion-input>
+      </ion-item>
 
-<ion-content padding>
-    <div class="jumbotron bg-transparent text-center">
-        <div *ngIf="!user" class="card text-center">
-          <h6 class="card-header">
-            Entrar
-          </h6>
-          <div class="card-block">
-            <h4 class="card-title">Não logado</h4>
-            <p class="card-text">Entrar com:</p>
-          </div>
-          <div class="card-block">
-            <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">Google<span class="fa fa-google"></span></button>
-            <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()">Facebook<span class="fa fa-facebook"></span></button>
-            <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()">LinkedIn<span class="fa fa-linkedin"></span></button>
-          </div>
-        </div>
-        <div *ngIf="user" class="card text-center">
-          <h6 class="card-header">
-            Escola Sustentável
-          </h6>
-          <div class="card-block"></div>
-          <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
-          <div class="card-block">
-            <h4 class="card-title">{{ user.name }}</h4>
-            <p class="card-text">{{ user.email }}</p>
-          </div>
-          <div class="card-block">
-            <button class="btn btn-danger" (click)="signOut()">Sair</button>
-          </div>
-        </div>
-      </div>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Senha
+        </ion-label>
+        <ion-input type="password" ></ion-input>
+      </ion-item>
+    </form>
+
+    <!-- <p text-right ion-text color="secondary" tappable (click)="forgotPass()">
+      <strong>Esqueceu a senha?</strong>
+    </p> -->
+
+    <div>
+      <button ion-button icon-start block color="dark" tappable (click)="signInWithCredentials()">
+        <ion-icon name="log-in"></ion-icon>
+        Entrar
+      </button>
+
+      <p text-center ion-text color="dark">Ou acesse com:</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook" (click)="signInWithFB()">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-linkedin" (click)="signInWithLinkedIn()">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus" (click)="signInWithGoogle()">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="dark" tappable (click)="register()">Novo aqui?
+        <strong>Registre-se</strong>
+      </span>
+    </div>
+
+  </div>
+</ion-content>
+
+<!-- <ion-content class="login-content" padding>
+  <ion-row class="top-row">
+    <ion-col>
+      <h1 class="label-logo">Escola Sustentável</h1>
+      <img src="../../assets/imgs/512PX.png" alt="">
+    </ion-col>
+  </ion-row>
+  <ion-row class="bottom-row">
+    <ion-col class="login-button">
+      <button ion-button block color="danger" (click)="signInWithGoogle()">Google Login</button>
+    </ion-col>
+  </ion-row>
 </ion-content> -->
