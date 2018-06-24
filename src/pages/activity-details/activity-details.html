@@ -1,0 +1,59 @@
+<!-- -->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <span ion-text>Atividade</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="common-bg">
+  <div class="container-img-location">
+    <img class="location" src="../../assets/imgs/96PX.png" alt="">
+    <img class="texto-complementar" src="../../assets/imgs/Texto_complementar.png" alt="">
+  </div>
+
+  <ion-row center>
+    <ion-col text-center>
+      <span ion-text color="dark" class="bold">
+        {{dataActivity.name}}
+      </span>
+    </ion-col>
+  </ion-row>
+
+  <div class="border-bottom" padding *ngFor="let item of dataActivity.content">
+    <span ion-text color="primary" class="bold">{{item.title}}</span>
+    <p ion-text *ngIf="dataActivity">{{ item.detail }}</p>
+  </div>
+
+  <ion-row center *ngIf="dataActivity.image">
+    <ion-col text-center>
+      <span ion-text color="dark" class="bold">
+        {{dataActivity.imageDescripton}}
+      </span>
+    </ion-col>
+  </ion-row>
+  <ion-row center *ngIf="dataActivity.image">
+    <ion-col text-center>
+      <button ion-button color="secondary" tappable>
+        Clique aqui e confira
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row center *ngIf="showImage">
+    <ion-col text-center>
+      <img [src]="dataActivity.image" alt="">
+    </ion-col>
+  </ion-row>
+
+  <div class="border-bottom" padding>
+    <span ion-text color="primary" class="bold">Onde estamos</span>
+    <p ion-text>
+      <span class="bold">Endereço:</span> {{ dataActivity.location }}</p>
+    <p ion-text>
+      <span class="bold">Tel.:</span> {{ dataActivity.phone }}</p>
+  </div>
+
+</ion-content>

@@ -13,10 +13,10 @@ export class UserService{
     }
 
     insert(user: User){
-        return this.http.post("http://localhost:61879/api/user/", user);
+        return this.http.post("/services/api/user/", user);
     }
 
     signIn(email: string, password: string){
-        return this.http.post("http://localhost:61879/api/user/auth", {Email: email, Password: password});
+        return this.http.post("/services/api/user/auth", {Email: email, Password: password});
     }
 }

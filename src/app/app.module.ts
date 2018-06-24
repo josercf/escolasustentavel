@@ -18,6 +18,9 @@ import { MyActionsPage } from '../pages/my-actions/my-actions';
 import { MyActionsPageModule } from '../pages/my-actions/my-actions.module';
 import { UserService } from '../pages/services/user-service';
 import { Http, HttpModule } from '../../node_modules/@angular/http';
+import { ActivityDetailsPage } from '../pages/activity-details/activity-details';
+import { ActivityDetailsPageModule } from '../pages/activity-details/activity-details.module';
+import { ActivityService } from '../pages/services/activity-service';
 
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -63,7 +66,8 @@ export function provideConfig() {
     SocialLoginModule,
     HomePageModule,
     ProfilePageModule,
-    MyActionsPageModule
+    MyActionsPageModule,
+    ActivityDetailsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +75,8 @@ export function provideConfig() {
     LoginPage,
     HomePage,
     ProfilePage,
-    MyActionsPage
+    MyActionsPage,
+    ActivityDetailsPage
   ],
   providers: [
     StatusBar,
@@ -81,7 +86,8 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
-    UserService
+    UserService,
+    ActivityService
   ]
 })
 export class AppModule { }

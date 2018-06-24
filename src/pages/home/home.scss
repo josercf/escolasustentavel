@@ -26,9 +26,10 @@ page-home {
         margin-bottom: 15px;
       }
 
-      .item a {
+      .item p {
         font-weight: bold;
         text-decoration: inherit; /* no underline */
-        font-size: 1.3em
+        font-size: 1.3em;
+        cursor: pointer;
       }
 }

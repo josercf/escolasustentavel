@@ -16,12 +16,23 @@ export class MyApp {
   rootPage: any = LoginPage;
   pages: Array<{ title: string, icon: string, component: any }>;
 
+  username: string = "";
+  photoUrl: string = "";
+
   constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen,
     private authService: AuthService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      this.authService.authState.subscribe((user) => {
+        if (user != null) {
+          this.photoUrl = user.photoUrl;
+          this.username = user.name;
+        }
+      });
+
       statusBar.styleDefault();
       splashScreen.hide();
     });

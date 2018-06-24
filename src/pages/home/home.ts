@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, MenuController, Events } from 'ion
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialUser } from 'angularx-social-login';
 import { Http, Response } from '@angular/http';
+import { ActivityDetailsPage } from '../activity-details/activity-details';
+import { ActivityService } from '../services/activity-service';
 
 declare var google;
 
@@ -21,43 +23,27 @@ declare var google;
 export class HomePage {
   map: any;
   private user: SocialUser;
-  private locations: any[] = [{
-    Id: '123456-7890',
-    Name: 'Uninove - Memorial',
-    Description: 'A escola xpto precisa de bandeirinhas para a festa junina que acontecerá dia 20/08',
-    Position: {
-      lat: -23.528869,
-      lng: -46.665706
-    }
-  },
-  {
-    Id: '123456-7891',
-    Name: 'Uninove - Memorial D',
-    Description: 'A escola xpto precisa de bandeirinhas para a festa junina que acontecerá dia 20/08',
-    Position: {
-      lat: -23.526748,
-      lng: -46.667659
-    },
-  }];
+  private markers: any[] = [];
+  private locations: any[] = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    private geolocation: Geolocation) {
+    private geolocation: Geolocation,
+    private activityService: ActivityService) {
     this.user = navParams.get('user');
   }
 
-  ionViewDidLoad() {
 
-    // this.http.get('https://www.reddit.com/r/gifs/new/.json?limit=10')
-    //          .map(res => res.json())
-    //          .subscribe(data => {
-    //             this.locations = data.data.children;
-    //           });
+
+  ionViewDidLoad() {
 
     this.geolocation.getCurrentPosition()
       .then((resp) => {
-        const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+
+        // const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+
+        const position = new google.maps.LatLng(-23.5538591, -46.6401798);
 
         const mapOptions = {
           zoom: 18,
@@ -72,34 +58,38 @@ export class HomePage {
           map: this.map
         });
 
-        this.loadLocations(this.map);
+        this.loadServerActivities();
       }).catch((error) => {
         console.log('Erro ao recuperar sua posição', error);
       });
   }
 
+   async loadServerActivities(){
+    this.activityService.list()
+    .subscribe(data =>{
+      this.locations = data;
+      this.loadLocations(this.map);
+    })
+  }
+
   loadLocations(map: any) {
-
-    var i = 1;
-
     this.locations.forEach(element => {
+      console.log("Loop item: " +JSON.stringify(element));
 
       var contentString =
         '<div class = "card">' +
-        '   <div class = "container-img-location">' +       
-        '      <img class="location" src="../../assets/imgs/96PX.png" alt="">'+ 
-        '      <img class="texto-complementar" src="../../assets/imgs/Texto_complementar.png" alt="">'+   
-            
+        '   <div class = "container-img-location">' +
+        '      <img class="location" src="../../assets/imgs/96PX.png" alt="">' +
+        '      <img class="texto-complementar" src="../../assets/imgs/Texto_complementar.png" alt="">' +
+
         '   </div>' +
-        `      <h5>${element.Name}</h5>` +
+        `      <h5>${element.name}</h5>` +
         '         ' +
         '   <div class = "item item-body">' +
-        `     ${element.Description}` +
+        `     ${element.description}` +
         '   </div>' +
-        //`   <button class="button icon-left ion-star button-positive">Favorites</button>`+
         '   <div class = "item item-divider">' +
-        `     <a href="/details/${element.Id}">Ver ação<a/>` +
-        '     <i class="icon ion-heart"></i>' +
+        `     <p class="details">Ver ação<p/>` +
         '   </div>' +
         '</div>';
 
@@ -114,19 +104,31 @@ export class HomePage {
         new google.maps.Point(10, 34));
 
       var marker = new google.maps.Marker({
-        position: element.Position,
+        position: element.position,
         map: map,
-        title: element.Name,
+        title: element.name,
         icon: pinImage,
       });
 
-     
-      marker.addListener('click', function () {
-        
-        infowindow.open(map, marker);
+      google.maps.event.addListenerOnce(infowindow, 'domready', () => {
+        let elements = document.getElementsByClassName('details');
+
+        for (var i = 0; i < elements.length; i++) {
+          elements.item(i).addEventListener('click', () => {
+            this.ir(element);
+          });
+        }
       });
 
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+      });
     });
+  }
+
+  ir(element: any) {
+    console.log("link clicked " + element.description);
+    this.navCtrl.push(ActivityDetailsPage, { data: element });
   }
 
   openMenu() {
