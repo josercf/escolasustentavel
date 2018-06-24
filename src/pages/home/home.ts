@@ -41,9 +41,9 @@ export class HomePage {
     this.geolocation.getCurrentPosition()
       .then((resp) => {
 
-        // const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+         const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
 
-        const position = new google.maps.LatLng(-23.5538591, -46.6401798);
+        //const position = new google.maps.LatLng(-23.5538591, -46.6401798);
 
         const mapOptions = {
           zoom: 18,

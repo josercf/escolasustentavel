@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Events } from 'ionic-angular';
+import { Platform, Nav, Events, Keyboard } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -8,6 +8,15 @@ import { HomePage } from '../pages/home/home';
 import { SocialUser, AuthService } from 'angularx-social-login';
 import { ProfilePage } from '../pages/profile/profile';
 import { MyActionsPage } from '../pages/my-actions/my-actions';
+
+export interface MenuItem {
+  title: string;
+  component: any;
+  icon: string;
+}
+
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,16 +24,20 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = LoginPage;
   pages: Array<{ title: string, icon: string, component: any }>;
+  appMenuItems: Array<MenuItem>;
 
   username: string = "";
   photoUrl: string = "";
 
-  constructor(platform: Platform, statusBar: StatusBar,
-    splashScreen: SplashScreen,
+  constructor( public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public keyboard: Keyboard,
     private authService: AuthService) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
+      this.initializeApp();
+
 
       this.authService.authState.subscribe((user) => {
         if (user != null) {
@@ -37,7 +50,7 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    this.pages = [
+    this.appMenuItems = [
       { title: 'Home', icon: 'home', component: HomePage },
       { title: 'Meu Perfil', icon: 'contact', component: ProfilePage },
       { title: 'Minhas ações', icon: 'book', component: MyActionsPage },
@@ -45,10 +58,35 @@ export class MyApp {
     ];
   }
 
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+
+      //*** Control Splash Screen
+      // this.splashScreen.show();
+      // this.splashScreen.hide();
+
+      //*** Control Status Bar
+      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false);
+
+      //*** Control Keyboard
+      //this.keyboard.disableScroll(true);
+    });
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    console.log("signOut");
+    this.authService.signOut()
+      .then(result => {
+        this.nav.setRoot(LoginPage);
+      });
   }
 
   sair() {
