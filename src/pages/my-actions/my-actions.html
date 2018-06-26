@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar color="danger">
+  <ion-toolbar color="primary">
     <ion-buttons left>
       <button ion-button icon-only (click)="toggleMenu();">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>Atividades disponiveis</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="openMenu('user')">
       </button>
@@ -16,13 +16,13 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
+    <!-- <ion-item *ngFor="let item in locations">
       <ion-thumbnail item-start>
         <img src="http://via.placeholder.com/120x120">
       </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
+      <h2>{{item.name}}</h2>
+      <p>{{item.detatils}}</p>
+      <button ion-button clear item-end (click)="ir(item);">ver</button>
+    </ion-item> -->
   </ion-list>
 </ion-content>

@@ -53,7 +53,7 @@ export class MyApp {
     this.appMenuItems = [
       { title: 'Home', icon: 'home', component: HomePage },
       { title: 'Meu Perfil', icon: 'contact', component: ProfilePage },
-      { title: 'Minhas ações', icon: 'book', component: MyActionsPage },
+      { title: 'Ações disponíveis', icon: 'book', component: MyActionsPage },
       // { title: 'Configurações', icon: 'settings', component: LoginPage }
     ];
   }

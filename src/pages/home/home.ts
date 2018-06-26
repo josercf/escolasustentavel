@@ -74,8 +74,7 @@ export class HomePage {
 
   loadLocations(map: any) {
     this.locations.forEach(element => {
-      console.log("Loop item: " +JSON.stringify(element));
-
+      
       var contentString =
         '<div class = "card">' +
         '   <div class = "container-img-location">' +

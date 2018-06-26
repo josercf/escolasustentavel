@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { ActivityDetailsPage } from '../activity-details/activity-details';
+import { ActivityService } from '../services/activity-service';
 
 /**
  * Generated class for the MyActionsPage page.
@@ -15,15 +17,29 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class MyActionsPage {
 
+  locations: any[];
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public menuCtrl: MenuController) {
+    public menuCtrl: MenuController,
+    private activityService: ActivityService) {
 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyActionsPage');
+  }
+
+  async loadServerActivities(){
+    this.activityService.list()
+    .subscribe(data =>{
+      this.locations = data;
+    });
+  }
+
+  ir(element: any) {
+    console.log("link clicked " + element.description);
+    this.navCtrl.push(ActivityDetailsPage, { data: element });
   }
 
   openMenu() {
