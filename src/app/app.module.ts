@@ -41,11 +41,11 @@ let config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider("226121184860930")
-  },
-  {
-    id: LinkedInLoginProvider.PROVIDER_ID,
-    provider: new LinkedInLoginProvider("78by3zjmphpynr", true, 'pt_BR')
   }
+  // {
+  //   id: LinkedInLoginProvider.PROVIDER_ID,
+  //   provider: new LinkedInLoginProvider("78by3zjmphpynr", true, 'pt_BR')
+  // }
 ]);
 
 export function provideConfig() {

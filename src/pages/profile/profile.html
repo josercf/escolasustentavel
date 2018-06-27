@@ -18,11 +18,38 @@
   <div id="content">
     <div id="profile-info">
       <img id="profile-image" [src]="user.photoUrl">
-
       <h3 id="profile-name">{{user.name}} </h3>
       <span id="profile-description">
         E-mail: {{user.email}}
       </span>
+      <fieldset class="field" style="padding: 15px">
+          <legend>Participante da(s) seguinte(s) ação(ões) sustentável(eis):</legend>
+          <h3> <strong>Serviços</strong></h3>
+            <input type="checkbox" /> elétrica
+            <input type="checkbox" />encanamento
+            <input type="checkbox" />alvenaria
+            <input type="checkbox" />pintura
+            <input type="checkbox" />marcenaria
+            <input type="checkbox" />ajudante
+            <br><br>
+            <h3> <strong>Voluntários</strong></h3>
+            <input type="checkbox" checked/> Limpeza
+            <input type="checkbox" />Educação
+            <input type="checkbox" />Social
+            <br><br>
+            <h3> <strong>Doador</strong></h3>
+            <input type="checkbox" checked/> material escolar
+            <input type="checkbox" />material de limpeza
+            <input type="checkbox" />material reciclável
+            
+            <br><br>
+            <h3> <strong>Empresas parceiras</strong></h3>
+            <input type="checkbox" checked /> material reciclável
+            <input type="checkbox" />material nociso
+        </fieldset>
     </div>
+
+  
+
   </div>
 </ion-content>

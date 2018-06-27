@@ -17,8 +17,8 @@ export class LoginPage {
 
   private user: SocialUser;
   private loggedIn: boolean;
-  private subscription: ISubscription;
-
+  private subscription: any;
+  private subscription2: any;
   email: string;
   password: string;
 
@@ -26,11 +26,8 @@ export class LoginPage {
     public menu: MenuController,
     private authService: AuthService,
     private userService: UserService) {
-      this.menu.swipeEnable(false);
-  }
+    this.menu.swipeEnable(false);
 
-
-  ionViewDidLoad() {
     this.subscription = this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
@@ -39,7 +36,7 @@ export class LoginPage {
 
         let appUser = this.createUser();
 
-        this.userService.insert(appUser)
+        this.subscription2 = this.userService.insert(appUser)
           .subscribe((response) => {
             console.log(`user: ${this.user.firstName} is logged`);
             this.user = null;
@@ -47,6 +44,11 @@ export class LoginPage {
           });
       }
     });
+  }
+
+
+  ionViewDidLoad() {
+
   }
 
   createUser(): User {
@@ -62,11 +64,18 @@ export class LoginPage {
     return appUser;
   }
   ionViewWillUnload() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    if (this.subscription2) {
+      this.subscription2.unsubscribe();
+    }
+
+    this.user = null;
   }
 
   redirectToHome() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(HomePage);
   }
 
   signInWithCredentials(): void {

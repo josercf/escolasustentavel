@@ -8,15 +8,18 @@ export class UserService{
     /**
      *
      */
+    url: string = "http://localhost:61879/";
     constructor(private http: Http) {
 
     }
 
     insert(user: User){
-        return this.http.post("/services/api/user/", user);
+       
+        //let url += "/services/";
+        return this.http.post(this.url +"/api/user/", user);
     }
 
     signIn(email: string, password: string){
-        return this.http.post("/services/api/user/auth", {Email: email, Password: password});
+        return this.http.post(this.url +"/api/user/auth", {Email: email, Password: password});
     }
 }

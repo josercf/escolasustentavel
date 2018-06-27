@@ -7,16 +7,19 @@ export class ActivityService{
     /**
      *
      */
+    url: string = "http://localhost:61879/";
     constructor(private http: Http) {
 
     }
 
     insert(activity: any){
-        return this.http.post("/services/api/escola/", activity);
+        //let url += "/services/";
+        return this.http.post(this.url+ "api/escola/", activity);
     }
 
     list(){
-        return this.http.get("/services/api/escola")
+        //let url += "/services/";
+        return this.http.get(this.url+ "api/escola/")
             .map(res => res.json());
     }
 }

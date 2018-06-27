@@ -17,7 +17,7 @@ import { ActivityService } from '../services/activity-service';
 })
 export class MyActionsPage {
 
-  locations: any[];
+  locations: any[] = [];
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
@@ -28,18 +28,19 @@ export class MyActionsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyActionsPage');
+    this.loadServerActivities().then(x => console.log('itens loaded'));
   }
 
-  async loadServerActivities(){
+  async loadServerActivities() {
     this.activityService.list()
-    .subscribe(data =>{
-      this.locations = data;
-    });
+      .subscribe(data => {
+        this.locations = data;
+      });
   }
 
   ir(element: any) {
     console.log("link clicked " + element.description);
-    this.navCtrl.push(ActivityDetailsPage, { data: element });
+    this.navCtrl.push(ActivityDetailsPage, { data: element, showMapLink: true });
   }
 
   openMenu() {
