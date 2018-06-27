@@ -8,14 +8,14 @@ export class UserService{
     /**
      *
      */
-    url: string = "http://localhost:61879/";
+    url: string = "http://localhost:61879";
     constructor(private http: Http) {
 
     }
 
     insert(user: User){
        
-        //let url += "/services/";
+        this.url = "/services";
         return this.http.post(this.url +"/api/user/", user);
     }
 

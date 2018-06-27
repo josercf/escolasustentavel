@@ -1,4 +1,21 @@
 page-profile {
+
+  .columns{
+    margin-top: 30px;
+  }
+  .column{
+   margin-top: 30px;
+    
+  }
+
+  .column > div.column{
+    margin-top: 10px;
+  }
+
+  .column{
+    float: left;
+    
+  }
     #profile-bg {
         position: fixed;
         left: 0;

@@ -20,6 +20,9 @@
         {{dataActivity.name}}
       </span>
     </ion-col>
+    <ion-col *ngIf="showMapLink">
+      <button ion-button round outline (click)="ir(item);"><ion-icon name="map"></ion-icon> &nbsp;Ver</button>
+    </ion-col>
   </ion-row>
 
   <div class="border-bottom" padding *ngFor="let item of dataActivity.content">
@@ -36,7 +39,7 @@
   </ion-row>
   <ion-row center *ngIf="dataActivity.image">
     <ion-col text-center>
-      <button ion-button color="secondary" tappable>
+      <button ion-button color="secondary" tappable (click)="showImage = !showImage;">
         Clique aqui e confira
       </button>
     </ion-col>

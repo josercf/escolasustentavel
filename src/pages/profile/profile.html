@@ -22,34 +22,112 @@
       <span id="profile-description">
         E-mail: {{user.email}}
       </span>
-      <fieldset class="field" style="padding: 15px">
-          <legend>Participante da(s) seguinte(s) ação(ões) sustentável(eis):</legend>
-          <h3> <strong>Serviços</strong></h3>
-            <input type="checkbox" /> elétrica
-            <input type="checkbox" />encanamento
-            <input type="checkbox" />alvenaria
-            <input type="checkbox" />pintura
-            <input type="checkbox" />marcenaria
-            <input type="checkbox" />ajudante
-            <br><br>
-            <h3> <strong>Voluntários</strong></h3>
-            <input type="checkbox" checked/> Limpeza
-            <input type="checkbox" />Educação
-            <input type="checkbox" />Social
-            <br><br>
-            <h3> <strong>Doador</strong></h3>
-            <input type="checkbox" checked/> material escolar
-            <input type="checkbox" />material de limpeza
-            <input type="checkbox" />material reciclável
-            
-            <br><br>
-            <h3> <strong>Empresas parceiras</strong></h3>
-            <input type="checkbox" checked /> material reciclável
-            <input type="checkbox" />material nociso
-        </fieldset>
     </div>
+  </div>
+  <div class="columns">
+    <ion-list>
+      <h3>Meus interesses:</h3>
+      <div class="column">
+        <h4>
+          <strong>Serviços</strong>
+        </h4>
 
-  
-
+        <ion-item>
+          <ion-label>elétrica
+          </ion-label>
+          <ion-checkbox [checked] = true > </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>encanamento
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>alvenaria
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>pintura
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>marcenaria
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>ajudante
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+      </div>
+      <div class="column">
+        <h4>
+          <strong>voluntários</strong>
+        </h4>
+        <ion-item>
+          <ion-label>limpeza
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>educação
+          </ion-label>
+          <ion-checkbox [checked] = true> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>social
+          </ion-label>
+          <ion-checkbox [checked] = true> </ion-checkbox>
+        </ion-item>
+      </div>
+      <div class="column">
+        <h4>
+          <strong>Doador</strong>
+        </h4>
+        <ion-item>
+          <ion-label>material escolar
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>material de limpeza
+          </ion-label>
+          <ion-checkbox [checked] = true> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>material reciclável
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+      </div>
+      <div class="column">
+        <h4>
+          <strong>Empresas parceiras</strong>
+        </h4>
+        <ion-item>
+          <ion-label>material escolar
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>material de limpeza
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>material reciclável
+          </ion-label>
+          <ion-checkbox> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label >material nocivo
+          </ion-label>
+          <ion-checkbox [checked] = true> </ion-checkbox>
+        </ion-item>
+      </div>
+    </ion-list>
   </div>
 </ion-content>

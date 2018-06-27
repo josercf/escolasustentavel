@@ -16,8 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ActivityDetailsPage {
 
   dataActivity: any;
+  showMapLink: boolean = false;
+  showImage: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.dataActivity = navParams.get('data');
+
+    if (navParams.get('showMapLink')) {
+      this.showMapLink = navParams.get('showMapLink');
+    }
+
   }
 
   ionViewDidLoad() {

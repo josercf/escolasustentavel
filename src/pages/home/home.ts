@@ -34,11 +34,6 @@ export class HomePage {
     private geolocation: Geolocation,
     private activityService: ActivityService) {
     this.user = navParams.get('user');
-  }
-
-
-
-  ionViewDidLoad() {
 
     this.geolocation.getCurrentPosition()
       .then((resp) => {
@@ -77,8 +72,14 @@ export class HomePage {
       });
   }
 
+  ionViewDidLoad() { }
+
   ionViewWillUnload() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.map = null;
   }
 
 
@@ -115,7 +116,7 @@ export class HomePage {
       });
 
       var pinColor = "2CAF18";
-      var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+      var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
         new google.maps.Size(21, 34),
         new google.maps.Point(0, 0),
         new google.maps.Point(10, 34));
